@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 18:38:27 by soksak            #+#    #+#             */
-/*   Updated: 2024/02/22 00:16:03 by soksak           ###   ########.fr       */
+/*   Updated: 2024/02/25 19:22:05 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static t_stack	*newstack(int index, int content)
 	return (list_node);
 }
 
-
 static void	stackadd(t_stack **stack, t_stack *new)
 {
 	if (stack_double_control(*stack, new->content, new->index) == NULL)
@@ -72,9 +71,9 @@ t_stack	*ft_stacklast(t_stack *stack)
 {
 	t_stack	*tmp;
 
-	if (!stack)
-		return (NULL);
 	tmp = stack;
+	if (!tmp)
+		return (NULL);
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);

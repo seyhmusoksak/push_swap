@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:48:25 by soksak            #+#    #+#             */
-/*   Updated: 2024/02/22 00:38:43 by soksak           ###   ########.fr       */
+/*   Updated: 2024/02/26 04:58:41 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,20 @@ void	print_error(void)
 
 char	**arg_join(char **argv)
 {
-	int i;
-	char **listed_all;
-	char *tmp;
+	int		i;
+	char	**listed_all;
+	char	*tmp;
 
 	i = 1;
-	while(argv[i])
+	tmp = NULL;
+	while (argv[i])
 	{
 		tmp = my_strjoin(tmp, argv[i]);
 		i++;
 	}
 	listed_all = ft_split(tmp, ' ');
+	free(tmp);
 	return (listed_all);
-
 }
 
 char	*my_strjoin(char *s1, char *s2)
@@ -114,18 +115,4 @@ int	my_atoi(const char *str)
 	if (n * sign > 2147483647 || n * sign < -2147483648)
 		print_error();
 	return (n * sign);
-}
-
-int is_sorted(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	tmp = *stack;
-	while (tmp->next)
-	{
-		if (tmp->content > tmp->next->content)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
 }
